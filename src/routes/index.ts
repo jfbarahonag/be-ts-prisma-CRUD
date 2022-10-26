@@ -1,16 +1,10 @@
-import {Request, Response, Router} from "express";
-
-import { validateRequestSchema } from "../middlewares/validate-request-schema";
-import { registerSchema } from "../schema/register-schema";
+import { Router } from "express";
+import userRoute from "./users/user.route";
 
 const rootRouter = Router()
 
-rootRouter.post('/user',
-registerSchema,
-validateRequestSchema,
-  (req: Request, res: Response) => {
-    console.log(req.body);
-    return res.json({status: "ok"})
-})
+rootRouter.use('/user', userRoute)
+
+
 
 export default rootRouter
