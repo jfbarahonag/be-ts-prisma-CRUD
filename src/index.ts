@@ -1,6 +1,5 @@
-import express, {Request, Response} from "express";
-import { validateRequestSchema } from "./middlewares/validate-request-schema";
-import { registerSchema } from "./schema/register-schema";
+import express from "express";
+import rootRouter from "./routes";
 
 const app = express()
 
@@ -8,13 +7,7 @@ const app = express()
 app.use(express.json())
 
 // routes
-app.post('/user',
-registerSchema,
-validateRequestSchema,
-  (req: Request, res: Response) => {
-    console.log(req.body);
-    return res.json({status: "ok"})
-})
+app.use("/api", rootRouter)
 
 // setup
 const PORT = process.env.PORT || 3000
