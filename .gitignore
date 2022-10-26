@@ -1,2 +1,7 @@
+# Node, JS, TS
 /node_modules
 /build
+
+## db
+sqlserver/*
+!sqlserver/*.yml
