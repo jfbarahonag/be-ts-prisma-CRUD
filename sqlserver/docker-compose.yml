@@ -1,13 +1,16 @@
+# https://www.c-sharpcorner.com/article/use-sqlcmd-utility-in-sql-server/#:~:text=SQLCMD%20generally%20use%20for%20repetitive%20tasks%20like%20unit,be%20run%20using%20sqlcmd%2C%20users%20must%20understand%20Transact-SQL.
+
 version: '3.7'
 
 services:
   sqlserver:
+    container_name: sqlserver
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=PaSs123456!
     ports:
       - 1433:1433
-    volumes:
-      - ./backup:/var/opt/sqlserver
-      - ./data:/var/opt/mssql
+    # volumes:
+    #   - ./backup:/var/opt/sqlserver
+    #   - ./data:/var/opt/mssql
