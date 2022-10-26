@@ -1,6 +1,6 @@
 import express, {Request, Response} from "express";
-import { body } from "express-validator";
 import { validateRequestSchema } from "./middlewares/validate-request-schema";
+import { registerSchema } from "./schema/register-schema";
 
 const app = express()
 
@@ -9,10 +9,7 @@ app.use(express.json())
 
 // routes
 app.post('/user',
-body('username').isEmail(),
-body('firstName').exists({checkFalsy: true})
-                  .isLength({min: 1}),
-body('password').isLength({ min: 5 }),
+registerSchema,
 validateRequestSchema,
   (req: Request, res: Response) => {
     console.log(req.body);
